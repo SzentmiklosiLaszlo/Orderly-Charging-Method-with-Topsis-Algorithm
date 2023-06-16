@@ -47,7 +47,7 @@ class AISITERO:
 
     def readimf(self):
     #获取初始数据
-        self.residentload=np.loadtxt('小区居民日常负荷数据.txt')
+        self.residentload=np.loadtxt('daily_load_data_of_residents_in_the_community.txt')
         self.carimf=np.loadtxt('carimf.txt')
         self.price=np.loadtxt('price.txt')
         self.cargo=np.loadtxt('cargo.txt')
@@ -67,7 +67,7 @@ class AISITERO:
             self.outpower.append(che[i][3])
             i+=1
         self.offpower=np.zeros(self.num)
-        
+
     def newstate(self):
     #变动新状态
         self.bodong=self.residentload[int(self.ke*4)][1]#+random.uniform(-5,5)
@@ -147,7 +147,7 @@ class AISITERO:
                 self.longgest=max(self.waittime)
                 self.zuidari=self.riqi
                 self.zuidashi=self.ke
-        
+
     def topsis(self):
     #topsis排序
         power=np.ones(self.num)-self.leftpower
@@ -161,7 +161,7 @@ class AISITERO:
         b=len(index)
         pfh=np.empty([b,1])
         i=0;j=0
-        ndata=index*index                               
+        ndata=index*index
         while j<b :
             pfh[j]=sum(ndata[j])
             j+=1
@@ -226,7 +226,7 @@ class AISITERO:
         rank=np.zeros(a)
         while i<self.nengcho :
             lo=cr.argmax()
-            if cr[lo]!=0:                
+            if cr[lo]!=0:
                 rank[lo]=i+1
                 cr[lo]=0
             i+=1
@@ -293,8 +293,8 @@ class AISITERO:
         np.savetxt('totalcost.txt',[self.totalcost,self.totalcost])     #为什么保存一个数会出错？？
         np.savetxt('satisfaction.txt',self.satisfaction)
 
-       
-    
+
+
     def Run(self):
     #主程序逻辑
         self.readimf()

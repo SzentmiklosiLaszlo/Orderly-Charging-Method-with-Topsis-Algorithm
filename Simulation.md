@@ -5,7 +5,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu May 18 14:21:11 2017
-Orderly Charging Method with Topsis Algorithm 
+Orderly Charging Method with Topsis Algorithm
 @author: Leung
 """
 ```
@@ -58,7 +58,7 @@ class AISITERO:
 获取初始数据函数：
 ```
     def readimf(self):
-        self.residentload=np.loadtxt('小区居民日常负荷数据.txt')
+        self.residentload=np.loadtxt('daily_load_data_of_residents_in_the_community.txt')
         self.carimf=np.loadtxt('carimf.txt')
         self.price=np.loadtxt('price.txt')
         self.cargo=np.loadtxt('cargo.txt')
@@ -97,7 +97,7 @@ class AISITERO:
             self.outpower.append(che[i][3])
             i+=1
         self.offpower=np.zeros(self.num)
-        
+
     def newstate(self):
     #变动新状态
         self.bodong=self.residentload[int(self.ke*4)][1]#+random.uniform(-5,5)
@@ -192,7 +192,7 @@ class AISITERO:
         b=len(index)
         pfh=np.empty([b,1])
         i=0;j=0
-        ndata=index*index                               
+        ndata=index*index
         while j<b :
             pfh[j]=sum(ndata[j])
             j+=1
@@ -257,7 +257,7 @@ class AISITERO:
         rank=np.zeros(a)
         while i<self.nengcho :
             lo=cr.argmax()
-            if cr[lo]!=0:                
+            if cr[lo]!=0:
                 rank[lo]=i+1
                 cr[lo]=0
             i+=1
